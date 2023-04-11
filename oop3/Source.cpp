@@ -42,15 +42,18 @@ int main()
 		clock_t start = clock();
 		for (int i = 0; i < itterations; ++i)
 		{
-			switch (rand() % 3)	//случайное действие
+			switch (rand()%4)	//случайное действие
 			{
 			case 0:
 				storage.pushObject(rand() % itterations, new DaughterObject); //добавляем объект
 				break;
 			case 1:
-				storage.delObject(rand() % itterations); //удаляем
+				storage.pushObject(rand() % itterations, new DaughterObject); //добавляем объект
 				break;
 			case 2:
+				storage.delObject(rand() % itterations); //удаляем
+				break;
+			case 3:
 				int setget = rand() % 2;
 				if (setget == 0) storage.getObject(rand() % itterations)->getsomething(); //геттер объекта
 				else storage.getObject(rand() % itterations)->setsomething(rand()%100); //сеттер
@@ -59,7 +62,8 @@ int main()
 		}
 		clock_t end = clock();
 		time += (long double)(end - start) / CLOCKS_PER_SEC; //считаем время
-		cout << itterations << " Итераций: " << time << " секунд" << endl; //вывод
+		cout << itterations << " Итераций: " << time << " секунд; "; //вывод
 		itterations *= 10;
+		cout << "Кол-во элементов: " << storage.getSize() << endl;
 	}
 }

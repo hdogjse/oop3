@@ -96,5 +96,6 @@ public:
 	int getSize() //размер контейнера
 	{
 		return size;
+
 	}
 };
